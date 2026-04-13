@@ -1,0 +1,778 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --pink: #c0194c;
+  --text: #333;
+  --text-sub: #666;
+  --border: #ddd;
+  --bg: #fff;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* アラートバー */
+.alert {
+  position: relative;
+  top: 0;
+  z-index: 1;
+  background-color: black;
+  width: 100%;
+  text-align: center;
+  padding: 18px;
+  color: white;
+  font-size: 14px;
+  box-shadow: 5px 5px 5px 680px rgba(180,180,180,0.3);
+}
+
+.alert a {
+  text-decoration: underline;
+  color: white;
+}
+
+/* ヘッダー */
+header {
+  position: relative;
+  width: 100%;
+  min-height: 1000px;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../img/eyecatch.jpg');
+}
+
+header h1.concept {
+  width: 90%;
+  margin: auto;
+  position: absolute;
+  top: 250px;
+  left: 5%;
+  color: white;
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: bold;
+}
+
+header nav {
+  position: relative;
+  top: 0;
+  margin: auto;
+  width: 100%;
+  padding: 0 5%;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 15px;
+  color: white;
+  transition: all .5s ease;
+}
+
+header nav .logo {
+  flex: 25%;
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
+  font-style: italic;
+}
+
+header nav a {
+  color: white;
+}
+
+header nav .logo img {
+  vertical-align: middle;
+}
+
+header nav .g_nav {
+  flex: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 50px;
+}
+
+header nav .g_nav .menu {
+  padding: 0 25px;
+  cursor: pointer;
+}
+
+header nav .sign {
+  flex: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+header nav .sp {
+  display: none;
+}
+
+/* スクロール時固定nav */
+header nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.75);
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+/* contactページ用ヘッダー */
+header.contact {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  background-image: none;
+  background-color: rgba(0,0,0,0.85);
+  border-bottom: 1px solid #ddd;
+}
+
+header.contact nav.motion {
+  position: relative;
+  background-color: transparent;
+}
+
+header.contact nav.motion a,
+header.contact nav.motion .sigmin_click,
+header.contact nav.motion .logo a {
+  color: white;
+}
+
+/* モーダル */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 360px;
+  max-width: 92vw;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-field {
+  margin-bottom: 0.75rem;
+}
+
+.modal-field input {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.modal-field input:focus {
+  border-color: var(--pink);
+}
+
+.btn-signin-submit {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.btn-signin-submit:hover {
+  opacity: 0.85;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn-social:hover {
+  background: #f5f5f5;
+}
+
+.btn-social img {
+  height: 24px;
+  width: auto;
+}
+
+/* Jump To Top */
+.jump-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: none;
+}
+
+.jump-to-top:hover {
+  background: rgba(0,0,0,0.85);
+}
+
+/* mainタグ */
+main {
+  margin: 80px 0 60px;
+}
+
+/* sectionの共通スタイル */
+section {
+  margin: 40px 0;
+  padding: 0 5%;
+}
+
+section p {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* はじめにセクション（トップ） */
+.cafe_intro {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: auto;
+}
+
+.cafe_intro .box {
+  padding: 10px 0;
+}
+
+.cafe_intro .info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cafe_intro .photo {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.cafe_intro .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cafe_intro .access {
+  padding: 5px 15px;
+}
+
+.cafe_intro .access .area {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cafe_intro .access .distance {
+  font-size: 14px;
+}
+
+/* ロケーションセクション */
+.bg_white {
+  background-color: white;
+  color: black;
+}
+
+.bg_white h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.cafe_local {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 15px;
+}
+
+.cafe_local .box {
+  padding: 10px 0;
+}
+
+.cafe_local .photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+.cafe_local .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cafe_local .text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Go To Eats */
+.goto {
+  margin-top: 40px;
+  opacity: 0.9;
+  position: relative;
+  padding: 0 5%;
+}
+
+.goto_text {
+  position: absolute;
+  top: 50px;
+  left: calc(5% + 50px);
+  background-color: rgba(255,255,255,0.3);
+  padding: 10px;
+}
+
+.goto_text h3 {
+  font-size: 42px;
+  font-weight: bold;
+  color: black;
+}
+
+.goto_text p {
+  font-size: 18px;
+  font-weight: 100;
+  color: black;
+}
+
+/* 体験セクション */
+.bg_black {
+  background-color: black;
+  color: white;
+  padding: 40px 5%;
+}
+
+.bg_black h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.bg_black > p {
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.cafe_exp {
+  margin: 15px auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 15px;
+}
+
+.cafe_exp .box {
+  padding: 10px 0;
+}
+
+.cafe_exp .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cafe_exp .text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.cafe_exp p {
+  font-size: 14px;
+  font-weight: 100;
+}
+
+/* ホストセクション */
+.cafe_host {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 15px;
+}
+
+.cafe_host .box {
+  padding: 10px 0;
+}
+
+.cafe_host .photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.cafe_host .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cafe_host .text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* フッター */
+footer {
+  border-top: 1px solid #ddd;
+  background-color: #f7f7f7;
+  padding: 4% 0;
+}
+
+footer .outer {
+  width: 90%;
+  margin: auto;
+  font-size: 0.9rem;
+}
+
+footer .nav_area {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+footer .inner {
+  flex: auto;
+}
+
+footer .inner h2 {
+  font-weight: bold;
+}
+
+footer .inner li {
+  margin: 1rem 0;
+}
+
+footer .inner a {
+  color: #333;
+}
+
+footer .reserved {
+  padding-top: 2%;
+  color: #333;
+  border-top: 1px solid #ccc;
+}
+
+footer .reserved a {
+  color: #333;
+  margin-right: 1rem;
+}
+
+/* お問い合わせフォーム */
+.contact-page {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem;
+}
+
+.contact-wrap {
+  width: 100%;
+  max-width: 1600px;
+  margin: 2rem auto 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  padding: 2rem;
+}
+
+.page-title-bar {
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.page-title-bar h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.form-instruction {
+  background: #f0f0f0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 1.2rem 1.2rem 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-instruction p {
+  margin: 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.contact-notice {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  margin-bottom: 2rem;
+  line-height: 2;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.req {
+  color: var(--pink);
+  margin-left: 3px;
+  font-size: 0.8rem;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 2px rgba(192,25,76,0.12);
+}
+
+.form-textarea {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  min-height: 200px;
+}
+
+.form-textarea:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 2px rgba(192,25,76,0.12);
+}
+
+.vali-error {
+  display: block;
+  color: var(--pink);
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.form-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.7rem 2rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-decoration: none;
+  text-align: center;
+  min-width: 200px;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: #fff;
+  color: var(--text);
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 0.7rem 2rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.btn-secondary:hover {
+  background: #f5f5f5;
+}
+
+.confirm-value {
+  padding: 0.7rem 0.75rem;
+  font-size: 0.95rem;
+  min-height: 2.5rem;
+  line-height: 1.6;
+}
+
+/* 一覧テーブル */
+.contact-list {
+  margin-top: 3.5rem;
+}
+
+.contact-list h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--pink);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f5e6ec;
+}
+
+.contact-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.contact-list-table th,
+.contact-list-table td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.contact-list-table th {
+  background: #f5f5f5;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.overflow-cell {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-edit {
+  color: #1a73e8;
+  margin-right: 0.6rem;
+}
+
+.link-edit:hover {
+  text-decoration: underline;
+}
+
+.link-delete {
+  color: var(--pink);
+}
+
+.link-delete:hover {
+  text-decoration: underline;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .cafe_intro {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cafe_local {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cafe_exp {
+    grid-template-columns: 1fr;
+  }
+  .cafe_host {
+    grid-template-columns: 1fr;
+  }
+}
