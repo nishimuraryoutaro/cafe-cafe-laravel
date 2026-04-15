@@ -10,9 +10,6 @@
       <p>下記の内容をご確認の上送信ボタンを押してください<br>内容を訂正する場合は戻るを押してください。</p>
     </div>
 
-    <form action="{{ url('/complete') }}" method="POST">
-      @csrf
-
       <div class="form-group">
         <label class="form-label">氏名</label>
         <div class="confirm-value">{{ session('contact_input.name') }}</div>
@@ -39,10 +36,16 @@
       </div>
 
       <div class="form-actions" style="display:flex; gap:16px;">
-        <button type="submit" id="confirm_send" class="btn-primary" style="flex:1;">送　信</button>
-        <a href="{{ url('/contact') }}" class="btn-secondary" id="back" style="flex:1; text-align:center; text-decoration:none; padding:0.7rem 2rem; display:flex; align-items:center; justify-content:center;">戻　る</a>
+        <form action="{{ url('/complete') }}" method="POST" style="flex:1;">
+          @csrf
+          <button type="submit" id="confirm_send" class="btn-primary" style="width:100%;">送　信</button>
+        </form>
+        <form action="{{ url('/back') }}" method="POST" style="flex:1;">
+          @csrf
+          <button type="submit" class="btn-secondary" id="back"
+          style="width:100%; text-align:center; padding:0.7rem 2rem; cursor:pointer;">戻　る</button>
+        </form>
       </div>
-    </form>
   </div>
 </main>
 

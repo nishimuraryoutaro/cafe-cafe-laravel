@@ -105,57 +105,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const backBtn = document.getElementById('back');
   if (backBtn) {
     backBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.location.href = backBtn.getAttribute('href');
-    });
-  }
-
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      const msgs = [];
-
-      const nameEl = document.getElementById('name');
-      const kanaEl = document.getElementById('kana');
-      const telEl  = document.getElementById('tel');
-      const mailEl = document.getElementById('mail');
-      const bodyEl = document.getElementById('contact_text');
-
-      const name = nameEl ? nameEl.value.trim() : '';
-      const kana = kanaEl ? kanaEl.value.trim() : '';
-      const tel  = telEl  ? telEl.value.trim()  : '';
-      const mail = mailEl ? mailEl.value.trim()  : '';
-      const body = bodyEl ? bodyEl.value.trim()  : '';
-
-      if (name === '') {
-        msgs.push('氏名は必須入力です');
-      } else if (name.length > 10) {
-        msgs.push('氏名は10文字以内で入力してください');
-      }
-
-      if (kana === '') {
-        msgs.push('フリガナは必須入力です');
-      } else if (kana.length > 10) {
-        msgs.push('フリガナは10文字以内で入力してください');
-      }
-
-      if (tel !== '' && !/^[0-9]+$/.test(tel)) {
-        msgs.push('電話番号には半角数字しか入力できません');
-      }
-
-      if (mail === '') {
-        msgs.push('メールアドレスは必須入力です');
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
-        msgs.push('メールアドレスにはメール形式(xxx@xxx.xxx)でしか入力出来ません');
-      }
-
-      if (body === '') {
-        msgs.push('お問い合わせ内容は必須入力です');
-      }
-
-      if (msgs.length > 0) {
+      const href = backBtn.getAttribute('href');
+      if (href) {
         e.preventDefault();
-        alert(msgs.join('\n'));
+        window.location.href = href;
       }
     });
   }

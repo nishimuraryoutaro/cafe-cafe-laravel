@@ -26,3 +26,4 @@ Route::get('/go-edit', [ContactController::class, 'goEdit']);
 Route::get('/edit', [ContactController::class, 'edit']);
 Route::post('/edit', [ContactController::class, 'complete']);
 Route::get('/delete', [ContactController::class, 'delete']);
+Route::post('/back', [ContactController::class, 'back']);

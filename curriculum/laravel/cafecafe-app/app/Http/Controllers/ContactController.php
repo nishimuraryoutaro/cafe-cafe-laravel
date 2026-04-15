@@ -98,11 +98,9 @@ class ContactController extends Controller
     public function goEdit(Request $request)
     {
         $id = $request->query('id');
-
         if (empty($id)) {
             return redirect('/contact');
         }
-
         session()->put('can_edit', true);
 
         return redirect('/edit?id=' . $id);
@@ -135,6 +133,16 @@ class ContactController extends Controller
         session()->forget('edit_old_data');
 
         return view('edit', ['contact' => $contact, 'errors' => $errors, 'old' => $old]);
+    }
+
+    public function back()
+    {
+        $input = session()->get('contact_input', []);
+        if (!empty($input)) {
+            session()->put('form_old_data', $input);
+            session()->forget('contact_input');
+        }
+        return redirect('/contact');
     }
 
     public function delete(Request $request)
